@@ -15,46 +15,26 @@
 
 .add-item {
     margin: 40px 0 20px 10px;
-    border: none;
     padding: 7px 15px;
-    background-color: rgb(255, 0, 0);
-    color: white;
     border-radius: 5px;
-    outline: none;
-    transition: 0.4s;
-    
 }
 
-.add-item:hover{
-    background-color: rgba(197, 3, 3, 0.918);
-    outline: none;
-}
-
-.comp-button {
+.comp_button {
     margin: 20px 10px 40px 10px;
     padding: 6px 15px;
-    border-radius: 14px;
-    outline: none;
-    border: none;
+    border-radius: 12px;
     transition: 0.4s;
 }
 
-.complete:hover {
-    background-color: black;
+.comp_button:hover{
+    background-color: rgb(108,117,125);
     color: white;
-    outline: none;
 }
 
-.incomplete {
+.comp_button_active {
+    background-color: rgb(108,117,125);
     color: white;
-    background-color: black;
-
-}
-
-.incomplete:hover {
-    background-color: white;
-    color: black;
-    outline: none;
+    
 }
 
 /* items */
@@ -74,26 +54,16 @@
     background-color: white;
 }
 
+.completedTask {
+    text-decoration: line-through;
+}
+
 .itemButton {
     margin: 10px 5px 10px 5px;
-    padding: 6px 25px;
+    padding: 6px 15px;
     border-radius: 4px;
     outline: none;
     border: none;
     color: white;
     transition: 0.4s;
-}
-
-.edit {
-    background-color: teal;
-    
-}
-
-.delete {
-
-    background-color: rgb(255, 0, 0);
-}
-
-.delete:hover {
-    background-color: rgba(197, 3, 3, 0.89);;
 }

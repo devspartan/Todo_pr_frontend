@@ -1,20 +1,26 @@
-import React from 'react'
-import data from './Data'
+import React, { Component } from 'react'
 import './todoCompCSS.css'
+import { Button } from 'reactstrap'
 
 
-function ItemComp(props) {
+class ItemComp extends Component {
 
-    return (
-        <div className='itemContainer'>
-            <span className='titleBox'>{props.task.title}</span>
-            <div>
-                <button className='itemButton edit'>Edit</button>
-                <button className='itemButton delete'>Delete</button>
+    render() {
+        var copmleteClass = 'titleBox  completedTask'
+        var incompleteClass = "titleBox"
+        
+        return (
+            <div className='itemContainer'>
+                <span className={this.props.taskStatus ? copmleteClass : incompleteClass}>{this.props.task.title}</span>
+                <div>
+                    <Button className='itemButton edit' color='info' onClick={() => this.props.setItem(this.props.task)}>Edit</Button>
+                    <Button className='itemButton delete' color='danger' onClick={() => this.props.dltItem(this.props.task)}>Delete</Button>
+                </div>
+
             </div>
-
-        </div>
-    )
+        )
+    }
 }
 
 export default ItemComp
+
