@@ -1,0 +1,99 @@
+.container{
+    width: 50%;
+    background-color: white;
+    border-radius: 5px;
+    min-width: 500px;
+}
+
+.todo-title {
+    cursor: pointer;
+  }
+  
+  .completed-todo {
+    text-decoration: line-through;
+  }
+
+.add-item {
+    margin: 40px 0 20px 10px;
+    border: none;
+    padding: 7px 15px;
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.4s;
+    
+}
+
+.add-item:hover{
+    background-color: rgba(197, 3, 3, 0.918);
+    outline: none;
+}
+
+.comp-button {
+    margin: 20px 10px 40px 10px;
+    padding: 6px 15px;
+    border-radius: 14px;
+    outline: none;
+    border: none;
+    transition: 0.4s;
+}
+
+.complete:hover {
+    background-color: black;
+    color: white;
+    outline: none;
+}
+
+.incomplete {
+    color: white;
+    background-color: black;
+
+}
+
+.incomplete:hover {
+    background-color: white;
+    color: black;
+    outline: none;
+}
+
+/* items */
+.itemContainer {
+    /* background-color: violet; */
+    width: 100%;
+    display: flex;
+    margin: 0px auto;
+    padding: 5px 10px;
+    border-top: 1px solid rgb(93, 90, 90);
+    justify-content: space-between;
+}
+
+.titleBox {
+    margin: 10px 0 10px 7px;
+    font-size: 22px;
+    background-color: white;
+}
+
+.itemButton {
+    margin: 10px 5px 10px 5px;
+    padding: 6px 25px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    color: white;
+    transition: 0.4s;
+}
+
+.edit {
+    background-color: teal;
+    
+}
+
+.delete {
+
+    background-color: rgb(255, 0, 0);
+}
+
+.delete:hover {
+    background-color: rgba(197, 3, 3, 0.89);;
+}
