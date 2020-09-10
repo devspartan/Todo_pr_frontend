@@ -7,7 +7,6 @@ import data from './Data'
 class TodoComp extends Component {
     constructor(props) {
         super(props)
-
         this.state = {
             todoList: data
         }
