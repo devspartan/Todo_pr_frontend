@@ -13,8 +13,16 @@ class ItemComp extends Component {
             <div className='itemContainer'>
                 <span className={this.props.taskStatus ? copmleteClass : incompleteClass}>{this.props.task.title}</span>
                 <div>
-                    <Button className='itemButton edit' color='info' onClick={() => this.props.setItem(this.props.task)}>Edit</Button>
-                    <Button className='itemButton delete' color='danger' onClick={() => this.props.dltItem(this.props.task)}>Delete</Button>
+                    <Button className='itemButton edit' 
+                            color='info' 
+                            onClick={() => this.props.setItem(this.props.task)}>
+                            Edit
+                    </Button>
+                    <Button className='itemButton delete'
+                            color='danger' 
+                            onClick={() => this.props.dltItem(this.props.task)}>
+                            Delete
+                    </Button>
                 </div>
 
             </div>

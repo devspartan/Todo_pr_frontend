@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {ModalBody, Modal, ModalHeader, ModalFooter, Button} from 'reactstrap'
 
-class DeletaModel extends Component {
+class DeleteModal extends Component {
     render() {
         const { toggle } = this.props;
         return (
@@ -21,4 +21,4 @@ class DeletaModel extends Component {
     }
 }
 
-export default DeletaModel
+export default DeleteModal

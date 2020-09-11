@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import './todoCompCSS.css'
 import ItemComp from './ItemComp'
-import axios from 'axios'
 import Modal from './Modal'
-import DeleteModel from './DeleteModel'
+import DeleteModal from './DeleteModal'
 import {Button} from 'reactstrap'
+import axios from 'axios'
 
 class TodoComp extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class TodoComp extends Component {
             isCompleted: false,
             todoList: [],
             modal: false,
-            dltModel: false,
+            dltModalState: false,
             activeItem: {
                 title: '',
                 description: '',
@@ -23,10 +23,10 @@ class TodoComp extends Component {
     }
 
     componentDidMount() {
-        this.getData()
+        this.fetchData()
     }
 
-    getData = () => {
+    fetchData = () => {
         axios.get("http://127.0.0.1:8000/api/todos/")
         .then(res => this.setState({ todoList: res.data})) 
         .catch(err => console.log(err, "Getting error in fetching data"))
@@ -34,22 +34,27 @@ class TodoComp extends Component {
 
     handleSubmitt = (item) => {
         this.resetActiveItem()
+        
+        // console.log(item, item.id, `http://127.0.0.1:8000/api/todos/${item.id}`, "item")
         if(item.id) {
-            axios.put(`http://127.0.0.1:8000/api/todos/${item.id}`, item)
-            .then(res => this.getData())
+            axios.put(`http://127.0.0.1:8000/api/todos/${item.id}/`, item)
+            .then(res => this.fetchData())
+            .catch(err => console.log(err, "gettingError"))
             return
         }
 
         axios.post("http://127.0.0.1:8000/api/todos/", item)
-        .then(res => this.getData())
+        .then(res => this.fetchData())
+        .catch(err => console.log(err, "error in posting"))
 
     }
 
     handleDelete = (item) => {
-        this.dltModel()
+        this.setDltModalState()
 
         axios.delete(`http://127.0.0.1:8000/api/todos/${item.id}`)
-          .then(res => this.getData())
+          .then(res => this.fetchData())
+          .catch(err => console.log(err, "error in deletion"))
 
     }
 
@@ -66,7 +71,7 @@ class TodoComp extends Component {
         ));
     };
 
-
+    // completed or not
     taskState = (task) => {
         if(task == "completed") {
             this.setState({
@@ -90,7 +95,7 @@ class TodoComp extends Component {
     setActiveItemDeletion = (item) => {
         this.setState({
             activeItem: item,
-            dltModel: !this.state.dltModel
+            dltModalState: !this.state.dltModalState
         })
     }
 
@@ -105,9 +110,9 @@ class TodoComp extends Component {
         })
     }
 
-    dltModel = () => {
+    setDltModalState = () => {
         this.setState({
-            dltModel: !this.state.dltModel
+            dltModalState: !this.state.dltModalState
         })
     }
 
@@ -140,8 +145,11 @@ class TodoComp extends Component {
                          onSave={this.handleSubmitt}/> : null 
                     }
 
-                    { this.state.dltModel ? <DeleteModel toggle={this.dltModel}
-                     onDelete={this.handleDelete} task={this.state.activeItem} /> : null }
+                    { this.state.dltModalState ? 
+                        <DeleteModal toggle={this.setDltModalState}
+                                     onDelete={this.handleDelete}
+                                     task={this.state.activeItem} /> : null
+                    }
             </div>
         );
     }
